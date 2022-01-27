@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>koTodoList ||</title>
+
+    <style>
+        @font-face {
+            font-family: 'RIDIBatang';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        html > body {
+            font-family: 'RIDIBatang';
+        }
+    </style>
+
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <header th:replace="fragments/header :: header"></header>
+
+        <div layout:fragment="contents" class="container mx-auto mt-12 flex-grow"></div>
+
+
+        <div class="fixed-action-btn mb-20">
+            <a class="btn-floating btn-large red">
+                <i class="large material-icons">apps</i>
+            </a>
+            <ul>
+                <li><a class="btn-floating green" href="/"><i class="material-icons">dehaze</i></a></li>
+                <li><a class="btn-floating blue" href="/todos/add"><i class="material-icons">mode_edit</i></a></li>
+            </ul>
+        </div>
+
+        <script>
+     M.AutoInit();
+
+
+     document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, options);
+      });
+
+    </script>
+
+
+        <footer th:replace="fragments/footer :: footer"></footer>
+    </div>
+</body>
+</html>
