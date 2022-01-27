@@ -25,11 +25,11 @@ class TodoController(
 
         val todoId = todoService.save(todoSaveForm);
 
-        return "redirect:/todos/$todoId";
+        return "redirect:/";
 
     }
 
-    @GetMapping("/todos/")
+    @GetMapping(value = [ "/", "/todos" ])
     fun showList(model: Model) :String {
 
         val todoList = todoService.getList();
@@ -54,7 +54,7 @@ class TodoController(
     fun doUpdate(@PathVariable(name = "id") id:Long, todoUpdateForm: TodoUpdateForm) :String {
 
         todoService.update(todoUpdateForm, id);
-        return "redirect:/todos/$id";
+        return "redirect:/";
 
     }
 

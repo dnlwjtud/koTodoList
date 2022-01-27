@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>koTodo || List</title>
+</head>
+<body>
+    <div layout:fragment="contents">
+
+        <div class="flex justify-center">
+            <ul class="collection with-header shadow-lg w-2/4">
+                <li class="collection-header"><span class="text-2xl">List</span></li>
+                <li class="collection-item avatar p-2 flex items-center justify-between" th:each="todo : ${todoList}">
+                    <i class="material-icons circle gray cursor-pointer" th:if="${todo.isComplete}">chat_bubble_outline</i>
+                    <i class="material-icons circle green cursor-pointer" th:unless="${todo.isComplete}">chat_bubble_outline</i>
+                    <div th:if="${todo.isComplete}">
+                        <span class="title font-bold text-3xl" ><del th:text="${todo.task}">Title</del></span>
+                        <p ><del th:text="${todo.description}">1</del></p>
+                    </div>
+                    <div th:unless="${todo.isComplete}">
+                        <span class="title font-bold text-3xl" th:text="${todo.task}">Title</span>
+                        <p th:text="${todo.description}">1</p>
+                    </div>
+                    <div class="cursor-pointer flex items-center justify-end" th:if="${todo.isComplete}">
+                        <i class="material-icons mr-2">build</i>
+                        <i class="material-icons">delete</i>
+                    </div>
+                    <div class="cursor-pointer flex items-center justify-end" th:unless="${todo.isComplete}">
+                        <i class="material-icons mr-2">build</i>
+                        <i class="material-icons">delete</i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

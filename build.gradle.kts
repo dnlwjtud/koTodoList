@@ -26,6 +26,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
 
 //	database
 	runtimeOnly("mysql:mysql-connector-java")

@@ -17,7 +17,14 @@
                         <p>Write your task and description</p>
                     </div>
                     <div class="card-action">
-                        <form class="w-full" th:action="@{~/todos/add}" method="post">
+                        <form class="w-full">
+
+                            <p class="mt-4 flex justify-end">
+                                <label>
+                                    <input type="checkbox" class="filled-in" name="isComplete"/>
+                                    <span>Completed</span>
+                                </label>
+                            </p>
 
                             <div class="flex flex-col">
                                 <div class="input-field">
@@ -34,10 +41,8 @@
 
                             <div class="flex flex-col">
                                 <div class="input-field flex justify-center">
-                                    <button>
-                                        <a class="waves-effect waves-light btn-large mr-4 green darken-1"><i class="material-icons right">create</i>Add</a>
-                                    </button>
-                                    <a class="waves-effect waves-light btn-large red" href="/"><i class="material-icons right">cancel</i>Cancel</a>
+                                    <a class="waves-effect waves-light btn-large mr-4 green darken-1"><i class="material-icons right">create</i>Add</a>
+                                    <a class="waves-effect waves-light btn-large red "><i class="material-icons right">cancel</i>Cancel</a>
                                 </div>
                             </div>
                         </form>
