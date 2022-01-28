@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>koTodo || List</title>
+    <script src="/js/checkComplete.js"></script>
 </head>
 <body>
     <div layout:fragment="contents">
@@ -13,8 +14,8 @@
             <ul class="collection with-header shadow-lg w-2/4">
                 <li class="collection-header"><span class="text-2xl">List</span></li>
                 <li class="collection-item avatar p-2 flex items-center justify-between" th:each="todo : ${todoList}">
-                    <i class="material-icons circle gray cursor-pointer" th:if="${todo.isComplete}">chat_bubble_outline</i>
-                    <i class="material-icons circle green cursor-pointer" th:unless="${todo.isComplete}">chat_bubble_outline</i>
+                    <i th:onclick="|updateStatus(${todo.id}, ${todo.isComplete})|" class="material-icons circle gray cursor-pointer" th:if="${todo.isComplete}">chat_bubble_outline</i>
+                    <i th:onclick="|updateStatus(${todo.id}, ${todo.isComplete})|" class="material-icons circle green cursor-pointer" th:unless="${todo.isComplete}">chat_bubble_outline</i>
                     <div th:if="${todo.isComplete}">
                         <span class="title font-bold text-3xl" ><del th:text="${todo.task}">Title</del></span>
                         <p ><del th:text="${todo.description}">1</del></p>
@@ -24,17 +25,26 @@
                         <p th:text="${todo.description}">1</p>
                     </div>
                     <div class="cursor-pointer flex items-center justify-end" th:if="${todo.isComplete}">
-                        <i class="material-icons mr-2">build</i>
-                        <i class="material-icons">delete</i>
+                        <a th:href="@{~/todos/edit/} + ${todo.id}">
+                            <i class="material-icons mr-2">build</i>
+                        </a>
+                        <a th:href="@{~/todos/delete/} + ${todo.id}">
+                            <i class="material-icons">delete</i>
+                        </a>
+
                     </div>
                     <div class="cursor-pointer flex items-center justify-end" th:unless="${todo.isComplete}">
-                        <i class="material-icons mr-2">build</i>
-                        <i class="material-icons">delete</i>
+                        <a th:href="@{~/todos/edit/} + ${todo.id}">
+                            <i class="material-icons mr-2">build</i>
+                        </a>
+                        <a th:href="@{~/todos/delete/} + ${todo.id}">
+                            <i class="material-icons">delete</i>
+                        </a>
                     </div>
                 </li>
             </ul>
         </div>
-
     </div>
+
 </body>
 </html>

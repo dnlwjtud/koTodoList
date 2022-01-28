@@ -2,6 +2,7 @@ package io.dnlwjtud.koTodoList.todos.application
 
 import io.dnlwjtud.koTodoList.todos.dao.TodoRepository
 import io.dnlwjtud.koTodoList.todos.domain.Todo
+import io.dnlwjtud.koTodoList.todos.dto.TodoCheckRequest
 import io.dnlwjtud.koTodoList.todos.dto.TodoDTO
 import io.dnlwjtud.koTodoList.todos.dto.TodoSaveForm
 import io.dnlwjtud.koTodoList.todos.dto.TodoUpdateForm
@@ -74,6 +75,15 @@ class TodoServiceImpl(
     @Transactional
     override fun delete(id: Long) {
         todoRepository.delete(findById(id).get());
+    }
+
+    @Transactional
+    override fun changeComplete(id: Long, todoCheckRequest: TodoCheckRequest) {
+
+        findById(id).ifPresent {
+                t -> t.updateTaskStatus(todoCheckRequest)
+        }
+
     }
 
 }
