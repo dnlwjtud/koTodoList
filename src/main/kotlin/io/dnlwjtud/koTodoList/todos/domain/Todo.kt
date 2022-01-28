@@ -1,5 +1,6 @@
 package io.dnlwjtud.koTodoList.todos.domain
 
+import io.dnlwjtud.koTodoList.todos.dto.TodoCheckRequest
 import io.dnlwjtud.koTodoList.todos.dto.TodoUpdateForm
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -26,6 +27,12 @@ data class Todo(
         this.isComplete = todoUpdateForm.isComplete;
 
         this.updateDate = LocalDateTime.now();
+
+    }
+
+    fun updateTaskStatus(todoCheckRequest: TodoCheckRequest) {
+
+        this.isComplete = todoCheckRequest.isComplete;
 
     }
 

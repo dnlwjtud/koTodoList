@@ -4,7 +4,7 @@
       layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="UTF-8">
-    <title>koTodo || Add</title>
+    <title>koTodo || Edit</title>
 </head>
 <body>
     <div layout:fragment="contents">
@@ -13,15 +13,17 @@
             <div class="m6 flex justify-center">
                 <div class="card px-6 w-2/4">
                     <div class="card-content">
-                        <span class="card-title text-2xl"><strong>Add</strong></span>
-                        <p>Write your task and description</p>
+                        <span class="card-title text-2xl"><strong>Edit</strong></span>
+                        <p>Edit your task and description</p>
                     </div>
                     <div class="card-action">
-                        <form class="w-full">
+                        <form class="w-full" th:action="@{~/todos/edit/} + ${todo.id}" method="post">
 
                             <p class="mt-4 flex justify-end">
                                 <label>
-                                    <input type="checkbox" class="filled-in" name="isComplete"/>
+                                    <input type="hidden" name="_isComplete" value="on">
+                                    <input type="checkbox" class="filled-in" name="isComplete" th:checked="${todo.isComplete}"/>
+
                                     <span>Completed</span>
                                 </label>
                             </p>
@@ -29,20 +31,22 @@
                             <div class="flex flex-col">
                                 <div class="input-field">
                                     <i class="material-icons prefix">content_paste</i>
-                                    <input id="icon_prefix" type="text" class="validate" name="task">
+                                    <input id="icon_prefix" type="text" class="validate" name="task" th:value="${todo.task}">
                                     <label for="icon_prefix">Task</label>
                                 </div>
                                 <div class="input-field">
                                     <i class="material-icons prefix">chat</i>
-                                    <input id="icon_telephone" type="tel" class="validate" name="description">
-                                    <label for="icon_telephone">Description</label>
+                                    <input id="icon_description" type="text" class="validate" name="description" th:value="${todo.description}">
+                                    <label for="icon_description">Description</label>
                                 </div>
                             </div>
 
                             <div class="flex flex-col">
                                 <div class="input-field flex justify-center">
-                                    <a class="waves-effect waves-light btn-large mr-4 green darken-1"><i class="material-icons right">create</i>Add</a>
-                                    <a class="waves-effect waves-light btn-large red "><i class="material-icons right">cancel</i>Cancel</a>
+                                    <button>
+                                        <a class="waves-effect waves-light btn-large mr-4 green darken-1"><i class="material-icons right">build</i>Edit</a>
+                                    </button>
+                                    <a class="waves-effect waves-light btn-large red" href="/"><i class="material-icons right">cancel</i>Cancel</a>
                                 </div>
                             </div>
                         </form>

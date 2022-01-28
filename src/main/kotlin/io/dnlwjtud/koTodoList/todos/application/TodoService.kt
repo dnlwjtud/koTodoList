@@ -1,6 +1,7 @@
 package io.dnlwjtud.koTodoList.todos.application
 
 import io.dnlwjtud.koTodoList.todos.domain.Todo
+import io.dnlwjtud.koTodoList.todos.dto.TodoCheckRequest
 import io.dnlwjtud.koTodoList.todos.dto.TodoDTO
 import io.dnlwjtud.koTodoList.todos.dto.TodoSaveForm
 import io.dnlwjtud.koTodoList.todos.dto.TodoUpdateForm
@@ -14,5 +15,6 @@ interface TodoService {
     fun getList(): List<TodoDTO>;
     fun update(todoUpdateForm: TodoUpdateForm, id: Long);
     fun delete(id: Long);
+    fun changeComplete(id: Long, todoCheckRequest: TodoCheckRequest);
 
 }
